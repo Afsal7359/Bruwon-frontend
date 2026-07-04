@@ -1,6 +1,6 @@
 import Link from 'next/link';
 import { getProducts, getContent, c } from '@/lib/server';
-import ProductCard from '@/components/ProductCard';
+import ProductsGrid from '@/components/ProductsGrid';
 import SubscribeForm from '@/components/SubscribeForm';
 
 export const dynamic = 'force-dynamic';
@@ -82,13 +82,7 @@ export default async function HomePage() {
           </div>
 
           <div className="products">
-            {products.length > 0 ? (
-              products.map((p) => <ProductCard key={p._id} product={p} />)
-            ) : (
-              <p className="muted" style={{ gridColumn: '1/-1', textAlign: 'center' }}>
-                Products load from the API. Start the server and run <code>npm run seed</code>.
-              </p>
-            )}
+            <ProductsGrid initial={products} />
           </div>
 
           <p className="shop-note reveal">
