@@ -43,7 +43,7 @@ export default function AdminLoginPage() {
             type="email"
             value={email}
             onChange={(e) => setEmail(e.target.value)}
-            placeholder="admin@bruwon.com"
+            placeholder="admin@gmail.com"
             autoComplete="username"
             required
           />
@@ -56,7 +56,7 @@ export default function AdminLoginPage() {
             type="password"
             value={password}
             onChange={(e) => setPassword(e.target.value)}
-            placeholder="admin12345"
+            placeholder="****"
             autoComplete="current-password"
             required
           />
@@ -67,7 +67,7 @@ export default function AdminLoginPage() {
         </button>
 
         <p className="muted center-note" style={{ padding: '12px 0 0' }}>
-          Default: admin@bruwon.com / admin12345
+          {/* Default: admin@bruwon.com / admin12345 */}
         </p>
       </form>
     </div>
