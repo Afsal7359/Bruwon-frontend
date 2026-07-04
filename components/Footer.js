@@ -61,14 +61,22 @@ export default function Footer({ tagline: taglineProp }) {
           <div className="footer-col">
             <h4>Help</h4>
             <ul>
-              <li><a href="#">Shipping</a></li>
-              <li><a href="#">Storage &amp; care</a></li>
-              <li><a href="#">Allergens</a></li>
-              <li><a href="#">Contact</a></li>
+              <li><Link href="/contact">Contact us</Link></li>
+              <li><Link href="/shipping-policy">Shipping &amp; delivery</Link></li>
+              <li><Link href="/refund-policy">Cancellation &amp; refund</Link></li>
+              <li><Link href="/terms">Terms &amp; conditions</Link></li>
+              <li><Link href="/privacy-policy">Privacy policy</Link></li>
             </ul>
           </div>
         </div>
         <div className="footer-wordmark" aria-hidden="true"><span>Bruwon</span></div>
+        <div className="footer-legal">
+          <Link href="/privacy-policy">Privacy Policy</Link>
+          <Link href="/terms">Terms &amp; Conditions</Link>
+          <Link href="/refund-policy">Cancellation &amp; Refund</Link>
+          <Link href="/shipping-policy">Shipping &amp; Delivery</Link>
+          <Link href="/contact">Contact Us</Link>
+        </div>
         <div className="footer-bottom">
           <span>© 2026 Bruwon™. All rights reserved.</span>
           <span>Made by hand · Shipped cold · <Link href="/">Back to top ↑</Link></span>

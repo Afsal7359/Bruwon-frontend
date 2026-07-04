@@ -586,6 +586,104 @@ table.tbl tr:hover td {
 .tar { text-align: right; }
 .center-note { text-align: center; padding: 40px; color: var(--cream-lt); }
 
+/* ---------------- Legal / policy pages ---------------- */
+.legal {
+  max-width: 840px;
+}
+.legal .updated {
+  color: var(--gold);
+  font-size: 13px;
+  letter-spacing: 0.04em;
+  margin-bottom: 30px;
+}
+.legal h2 {
+  font-size: clamp(20px, 2.4vw, 26px);
+  color: var(--cream);
+  margin: 38px 0 14px;
+  letter-spacing: -0.01em;
+}
+.legal h3 {
+  font-size: 17px;
+  color: var(--cream);
+  margin: 22px 0 10px;
+}
+.legal p,
+.legal li {
+  color: var(--cream-lt);
+  line-height: 1.8;
+  margin-bottom: 14px;
+  font-size: 15.5px;
+}
+.legal ul {
+  padding-left: 22px;
+  margin-bottom: 18px;
+}
+.legal li {
+  margin-bottom: 8px;
+}
+.legal a {
+  color: var(--gold);
+  text-decoration: underline;
+  text-underline-offset: 3px;
+}
+.legal a:hover {
+  color: var(--gold-lt);
+}
+.legal .intro {
+  font-size: 17px;
+  color: var(--cream-50);
+  margin-bottom: 22px;
+}
+.legal strong {
+  color: var(--cream);
+  font-weight: 700;
+}
+
+/* contact cards */
+.contact-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+  gap: 18px;
+  margin: 28px 0 12px;
+}
+.contact-card {
+  background: var(--choc-850);
+  border: 1px solid var(--line);
+  border-radius: 16px;
+  padding: 24px;
+}
+.contact-card .ck {
+  font-size: 12px;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--gold);
+  font-weight: 700;
+  margin-bottom: 8px;
+}
+.contact-card .cv {
+  color: var(--cream-50);
+  font-size: 16px;
+  line-height: 1.6;
+}
+.contact-card .cv a { color: var(--cream-50); }
+.contact-card .cv a:hover { color: var(--gold); }
+
+/* footer legal row */
+.footer-legal {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px 20px;
+  padding-top: 18px;
+  margin-top: 6px;
+  border-top: 1px solid var(--line);
+}
+.footer-legal a {
+  color: var(--cream-lt);
+  font-size: 13px;
+  transition: color 0.3s;
+}
+.footer-legal a:hover { color: var(--gold); }
+
 /* ---------------- Branded loader ---------------- */
 .brand-loader {
   position: fixed;
