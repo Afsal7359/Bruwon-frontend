@@ -1,6 +1,28 @@
+'use client';
 import Link from 'next/link';
+import { useEffect, useState } from 'react';
+import api from '@/lib/api';
 
-export default function Footer({ tagline }) {
+const DEFAULT_TAGLINE =
+  'A bar built to be broken. Pistachio, kunafa and single-origin chocolate, handcrafted in small batches.';
+
+export default function Footer({ tagline: taglineProp }) {
+  const [tagline, setTagline] = useState(taglineProp || DEFAULT_TAGLINE);
+
+  useEffect(() => {
+    if (taglineProp) return;
+    let alive = true;
+    api
+      .getContent()
+      .then((c) => {
+        if (alive && c && c['footer.tagline']) setTagline(c['footer.tagline']);
+      })
+      .catch(() => {});
+    return () => {
+      alive = false;
+    };
+  }, [taglineProp]);
+
   return (
     <footer className="footer">
       <div className="wrap">

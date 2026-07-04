@@ -8,7 +8,7 @@ export const dynamic = 'force-dynamic';
 export default async function HomePage() {
   const [products, content] = await Promise.all([getProducts(), getContent()]);
 
-  const title = c(content, 'hero.title', 'Made to make every moment sweeter.');
+  const title = c(content, 'hero.title', 'A bar built to be broken.');
   const words = title.trim().split(' ');
   const last = words.pop();
   const heroImg = c(content, 'hero.image', 'https://images.pexels.com/photos/6261691/pexels-photo-6261691.jpeg?auto=compress&cs=tinysrgb&w=1600');
@@ -23,12 +23,12 @@ export default async function HomePage() {
         <div className="hero-glow" aria-hidden="true" />
         <div className="wrap hero-grid">
           <div className="hero-copy">
-            <span className="eyebrow hero-anim ha1">{c(content, 'hero.eyebrow', 'Handcrafted Chocolate')}</span>
+            <span className="eyebrow hero-anim ha1">{c(content, 'hero.eyebrow', 'Bruwon™')}</span>
             <h1 className="hero-anim ha2">
               {words.join(' ')} <span className="gleam">{last}</span>
             </h1>
             <p className="hero-sub hero-anim ha3">
-              {c(content, 'hero.subtitle', 'Handcrafted chocolates in small batches — rich, premium and packed fresh. Choose the perfect box for yourself or as a thoughtful gift.')}
+              {c(content, 'hero.subtitle', 'Discover our signature collection of handcrafted chocolates — featuring toasted kunafa, pistachio cream and single-origin chocolate. Small batches, packed fresh.')}
             </p>
             <div className="hero-cta hero-anim ha4">
               <Link href="/shop" className="btn btn--solid">
@@ -44,19 +44,8 @@ export default async function HomePage() {
           </div>
 
           <div className="hero-visual hero-anim">
-            <div className="ring" aria-hidden="true" />
-            <svg className="rot-text" viewBox="0 0 300 300" aria-hidden="true">
-              <defs>
-                <path id="circlePath" d="M150,150 m-118,0 a118,118 0 1,1 236,0 a118,118 0 1,1 -236,0" />
-              </defs>
-              <text>
-                <textPath href="#circlePath" startOffset="0">
-                  BRUWON™ · PISTACHIO KUNAFA · SMALL BATCH · BRUWON™ · CRACK INTO IT ·
-                </textPath>
-              </text>
-            </svg>
             <video
-              className="hero-center-video"
+              className="hero-video"
               src="/assets/video/video.mp4"
               poster={c(content, 'hero.rotateImage', '/assets/products/p3.jpg')}
               autoPlay
