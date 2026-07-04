@@ -581,3 +581,8 @@ img.lazy-img.loaded{opacity:1}
   .rot-text{animation:none}
   .marquee-track{animation:none;transform:translateX(0)}
 }
+
+/* Safety: if JavaScript is unavailable, never leave reveal content hidden */
+@media (scripting: none){
+  .reveal,.hero-anim{opacity:1 !important;transform:none !important}
+}

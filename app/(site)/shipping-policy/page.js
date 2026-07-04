@@ -1,8 +1,10 @@
-import { SITE } from '@/lib/site';
+import { getBusiness } from '@/lib/business';
 
-export const metadata = { title: 'Shipping & Delivery Policy — Bruwon™' };
+export const metadata = { title: 'Shipping & Delivery Policy' };
+export const dynamic = 'force-dynamic';
 
-export default function ShippingPolicyPage() {
+export default async function ShippingPolicyPage() {
+  const SITE = await getBusiness();
   return (
     <section className="page">
       <div className="wrap legal">

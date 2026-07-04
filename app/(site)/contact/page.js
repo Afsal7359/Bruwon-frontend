@@ -1,8 +1,10 @@
-import { SITE } from '@/lib/site';
+import { getBusiness } from '@/lib/business';
 
-export const metadata = { title: 'Contact Us — Bruwon™' };
+export const metadata = { title: 'Contact Us' };
+export const dynamic = 'force-dynamic';
 
-export default function ContactPage() {
+export default async function ContactPage() {
+  const SITE = await getBusiness();
   return (
     <section className="page">
       <div className="wrap legal">

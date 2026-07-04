@@ -5,7 +5,7 @@ import { api } from '@/lib/api';
 import { getToken, useAuthErrorHandler } from '@/components/admin/useAdminAuth';
 import { ImagePicker } from '@/components/admin/ImagePicker';
 
-const GROUP_ORDER = ['hero', 'shop', 'story', 'process', 'quote', 'cta', 'footer'];
+const GROUP_ORDER = ['hero', 'shop', 'story', 'process', 'quote', 'cta', 'footer', 'business'];
 
 export default function AdminContentPage() {
   const handleError = useAuthErrorHandler();

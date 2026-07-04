@@ -1,8 +1,10 @@
-import { SITE } from '@/lib/site';
+import { getBusiness } from '@/lib/business';
 
-export const metadata = { title: 'Cancellation & Refund Policy — Bruwon™' };
+export const metadata = { title: 'Cancellation & Refund Policy' };
+export const dynamic = 'force-dynamic';
 
-export default function RefundPolicyPage() {
+export default async function RefundPolicyPage() {
+  const SITE = await getBusiness();
   return (
     <section className="page">
       <div className="wrap legal">

@@ -1,8 +1,10 @@
-import { SITE } from '@/lib/site';
+import { getBusiness } from '@/lib/business';
 
-export const metadata = { title: 'Privacy Policy — Bruwon™' };
+export const metadata = { title: 'Privacy Policy' };
+export const dynamic = 'force-dynamic';
 
-export default function PrivacyPolicyPage() {
+export default async function PrivacyPolicyPage() {
+  const SITE = await getBusiness();
   return (
     <section className="page">
       <div className="wrap legal">

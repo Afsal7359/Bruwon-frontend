@@ -36,6 +36,7 @@ export default function Nav() {
         <li><Link href="/#story">Story</Link></li>
         <li><Link href="/shop">Shop</Link></li>
         <li><Link href="/#process">Process</Link></li>
+        <li><Link href="/contact">Contact</Link></li>
       </ul>
 
       <div className="nav-right">

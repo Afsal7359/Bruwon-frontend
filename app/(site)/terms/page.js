@@ -1,8 +1,10 @@
-import { SITE } from '@/lib/site';
+import { getBusiness } from '@/lib/business';
 
-export const metadata = { title: 'Terms & Conditions — Bruwon™' };
+export const metadata = { title: 'Terms & Conditions' };
+export const dynamic = 'force-dynamic';
 
-export default function TermsPage() {
+export default async function TermsPage() {
+  const SITE = await getBusiness();
   return (
     <section className="page">
       <div className="wrap legal">
