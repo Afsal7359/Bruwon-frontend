@@ -6,7 +6,8 @@ import { api } from '@/lib/api';
 import { money, fmtDate } from '@/lib/format';
 import { getToken, useAuthErrorHandler } from '@/components/admin/useAdminAuth';
 
-const FILTERS = ['all', 'created', 'paid', 'fulfilled', 'failed', 'cancelled'];
+// 'created' orders are unpaid/abandoned checkouts — hidden from the orders list.
+const FILTERS = ['all', 'paid', 'fulfilled', 'failed', 'cancelled'];
 
 export default function AdminOrdersPage() {
   const handleError = useAuthErrorHandler();
