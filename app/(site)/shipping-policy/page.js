@@ -34,13 +34,13 @@ export default async function ShippingPolicyPage() {
         </ul>
 
         <h2>3. Shipping charges</h2>
-        <p>Shipping is charged per order based on the box you choose, and is always shown at checkout before payment:</p>
+        <p>Shipping is based on your total order value and is always shown at checkout before payment:</p>
         <ul>
-          <li><strong>6-Piece Box</strong> — ₹60 shipping</li>
-          <li><strong>10-Piece Box</strong> — ₹40 shipping</li>
-          <li><strong>15-Piece Box</strong> — <strong>Free shipping</strong></li>
+          <li>Orders of <strong>₹480 or more</strong> — <strong>Free shipping</strong></li>
+          <li>Orders from <strong>₹300 to ₹479</strong> — ₹40 shipping</li>
+          <li>Orders below <strong>₹300</strong> — ₹60 shipping</li>
         </ul>
-        <p>When a cart contains more than one box, the applicable shipping is the highest single box fee in the cart.</p>
+        <p>Only one shipping charge applies per order — the tier your order value reaches. Adding more items never increases the shipping, and once your order reaches ₹480 shipping is free.</p>
 
         <h2>4. Packaging</h2>
         <p>

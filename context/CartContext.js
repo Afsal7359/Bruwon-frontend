@@ -1,5 +1,6 @@
 'use client';
 import { createContext, useContext, useEffect, useMemo, useState, useCallback } from 'react';
+import { calcShipping } from '@/lib/shipping';
 
 const CartContext = createContext(null);
 const STORAGE_KEY = 'bruwon_cart';
@@ -58,8 +59,8 @@ export function CartProvider({ children }) {
 
   const count = useMemo(() => items.reduce((s, i) => s + i.qty, 0), [items]);
   const subtotal = useMemo(() => items.reduce((s, i) => s + i.price * i.qty, 0), [items]);
-  // per-order shipping = highest box shipping fee in the cart (0 = free)
-  const shipping = useMemo(() => items.reduce((m, i) => Math.max(m, Number(i.shipping || 0)), 0), [items]);
+  // order-value based shipping (only the reached tier applies — see lib/shipping.js)
+  const shipping = useMemo(() => calcShipping(subtotal), [subtotal]);
   const total = subtotal + shipping;
   const currency = items[0]?.currency || 'INR';
 
