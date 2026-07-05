@@ -23,8 +23,8 @@ export default function CheckoutPage() {
   const [busy, setBusy] = useState(false);
   const [msg, setMsg] = useState(null);
   const [form, setForm] = useState({
-    name: '', email: '', phone: '',
-    line1: '', line2: '', city: '', state: '', zip: '', country: 'India',
+    name: '', email: '', phone: '+91 ',
+    line1: '', city: '', state: '', zip: '', country: 'India',
   });
 
   useEffect(() => {
@@ -39,10 +39,25 @@ export default function CheckoutPage() {
 
   const set = (k) => (e) => setForm((f) => ({ ...f, [k]: e.target.value }));
 
+  // phone: keep the +91 prefix, allow only digits/space after it
+  const setPhone = (e) => {
+    let v = e.target.value;
+    if (!v.startsWith('+91')) v = '+91 ' + v.replace(/^\+?9?1?\s*/, '');
+    setForm((f) => ({ ...f, phone: v }));
+  };
+  const setZip = (e) => {
+    const v = e.target.value.replace(/\D/g, '').slice(0, 6);
+    setForm((f) => ({ ...f, zip: v }));
+  };
+
   const validate = () => {
     if (!form.name.trim()) return 'Please enter your name.';
-    if (!/^[^@\s]+@[^@\s]+\.[^@\s]+$/.test(form.email)) return 'Please enter a valid email.';
-    if (!form.line1.trim() || !form.city.trim() || !form.zip.trim()) return 'Please complete your shipping address.';
+    const digits = form.phone.replace(/\D/g, '');
+    if (digits.length < 12) return 'Please enter a valid 10-digit phone number.'; // 91 + 10 digits
+    if (form.email.trim() && !/^[^@\s]+@[^@\s]+\.[^@\s]+$/.test(form.email.trim()))
+      return 'Please enter a valid email (or leave it blank).';
+    if (!form.line1.trim() || !form.city.trim()) return 'Please complete your shipping address.';
+    if (form.zip.trim().length !== 6) return 'Please enter a valid 6-digit pincode.';
     return null;
   };
 
@@ -62,7 +77,7 @@ export default function CheckoutPage() {
           email: form.email,
           phone: form.phone,
           address: {
-            line1: form.line1, line2: form.line2, city: form.city,
+            line1: form.line1, city: form.city,
             state: form.state, zip: form.zip, country: form.country,
           },
         },
@@ -160,22 +175,25 @@ export default function CheckoutPage() {
               </div>
               <div className="field">
                 <label>Phone</label>
-                <input value={form.phone} onChange={set('phone')} placeholder="+91 90000 00000" />
+                <input
+                  type="tel"
+                  value={form.phone}
+                  onChange={setPhone}
+                  placeholder="+91 90000 00000"
+                  inputMode="tel"
+                  required
+                />
               </div>
             </div>
             <div className="field">
-              <label>Email</label>
-              <input type="email" value={form.email} onChange={set('email')} placeholder="you@email.com" required />
+              <label>Email <span className="muted" style={{ textTransform: 'none', letterSpacing: 0 }}>(optional)</span></label>
+              <input type="email" value={form.email} onChange={set('email')} placeholder="you@email.com" />
             </div>
 
             <h3 style={{ margin: '24px 0 18px' }}>Shipping address</h3>
             <div className="field">
-              <label>Address line 1</label>
-              <input value={form.line1} onChange={set('line1')} placeholder="Flat / House, Street" required />
-            </div>
-            <div className="field">
-              <label>Address line 2</label>
-              <input value={form.line2} onChange={set('line2')} placeholder="Area, Landmark (optional)" />
+              <label>Address</label>
+              <input value={form.line1} onChange={set('line1')} placeholder="Flat / House, Street, Area, Landmark" required />
             </div>
             <div className="field-row">
               <div className="field">
@@ -189,8 +207,15 @@ export default function CheckoutPage() {
             </div>
             <div className="field-row">
               <div className="field">
-                <label>PIN / ZIP</label>
-                <input value={form.zip} onChange={set('zip')} required />
+                <label>Pincode</label>
+                <input
+                  value={form.zip}
+                  onChange={setZip}
+                  placeholder="6-digit pincode"
+                  inputMode="numeric"
+                  maxLength={6}
+                  required
+                />
               </div>
               <div className="field">
                 <label>Country</label>
